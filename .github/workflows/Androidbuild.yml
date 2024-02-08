@@ -1,5 +1,5 @@
 
-name: AndroidWorkflows
+name: HiSatwinder
 on:
   pull_request:
     branches: [ master ]
