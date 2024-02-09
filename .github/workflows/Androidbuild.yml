@@ -22,6 +22,9 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
+      - name: Run tests
+        run: ./gradlew test
+
       - name: Build with Gradle
         run: ./gradlew build
 
@@ -31,17 +34,3 @@ jobs:
           name: satwinderCICD.apk
           path: app/build/outputs/apk/debug/app-debug.apk
 
-  create_link:
-    runs-on: ubuntu-latest
-    needs: build
-    if: always()
-    steps:
-      - name: Download the build artifact
-        uses: actions/download-artifact@v4.3.1
-        with:
-          name: satwinderCICD.apk
-          path: app/build/outputs/apk/debug/
-
-      - name: Create link to build artifact
-        run:
-          echo "Build artifact: ${{ github.server_url }}/${{ github.repository }}/blob/${{ github.sha }}/app/build/outputs/apk/debug/app-debug.apk"
