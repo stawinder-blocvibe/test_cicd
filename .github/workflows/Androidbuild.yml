@@ -33,16 +33,3 @@ jobs:
           name: satwinderCICD
           path: app/build/outputs/apk/debug/app-debug.apk
 
-  create-download-link:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Create Download Link
-        id: create_download_link
-        uses: softprops/action-gh-release@v1
-        with:
-          files: app/build/outputs/apk/debug/app-debug.apk
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Print Download Link
-        run: echo "Download Link ${{ steps.create_download_link.outputs.url }}"
