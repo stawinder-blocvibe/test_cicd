@@ -24,15 +24,19 @@ jobs:
       - name: Run tests
         run: ./gradlew test
 
-      - name: Build with Gradle
-        run: ./gradlew assembleRelease
+      - name: Build Release APK
+        run: |
+         ./gradlew assembleRelease -PkeystorePath=/smartpm.jks
 
-      - name: Build with Gradle
-        run: ./gradlew build
+#      - name: Build with Gradle
+#        run: ./gradlew assembleRelease
 
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4.3.1
-        with:
-          name: satwinderCICD
-          path: app/build/outputs/apk/release/app-debug.apk
+#      - name: Build with Gradle
+#        run: ./gradlew build
+
+#      - name: Upload a Build Artifact
+#        uses: actions/upload-artifact@v4.3.1
+#        with:
+#          name: satwinderCICD
+#          path: app/build/outputs/apk/release/app-debug.apk
 
