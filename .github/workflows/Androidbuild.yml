@@ -24,9 +24,14 @@ jobs:
       - name: Run tests
         run: ./gradlew test
 
-      - name: Build Release APK
+      - name: Sign AAB File
         run: |
-         ./gradlew assembleRelease -PkeystorePath=app/smartpm.jks
+            jarsigner -verbose -keystore app/smartpm.jks app/build/outputs/apk/release/app-release.apk keyAlias
+       
+
+#      - name: Build Release APK
+#        run: |
+#         ./gradlew assembleRelease -PkeystorePath=app/smartpm.jks
 
 #      - name: Build with Gradle
 #        run: ./gradlew assembleRelease
