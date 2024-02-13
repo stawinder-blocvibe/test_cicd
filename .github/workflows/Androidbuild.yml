@@ -31,7 +31,7 @@ jobs:
           # Run jarsigner command
       - name: Sign APK
         run: |
-         echo $KEY_PASSWORD | jarsigner -verbose -keystore app/smartpm.jks platforms/android/build/outputs/apk/* smartpm
+         echo $KEY_PASSWORD | jarsigner -verbose -keystore app/smartpm.jks Users/DELL/AndroidStudioProjects/HiSatwinder/app/build/outputs/apk/release/app-release-unsigned.apk smartpm
         env:
          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
          JAVA_HOME: ${{ env.JAVA_HOME }}
