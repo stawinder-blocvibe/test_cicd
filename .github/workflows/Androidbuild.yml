@@ -26,7 +26,7 @@ jobs:
 
       - name: Build Release APK
         run: |
-         ./gradlew assembleRelease -PkeystorePath=/smartpm.jks
+         ./gradlew assembleRelease -PkeystorePath=app/smartpm.jks
 
 #      - name: Build with Gradle
 #        run: ./gradlew assembleRelease
