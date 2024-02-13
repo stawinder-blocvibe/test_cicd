@@ -26,6 +26,12 @@ jobs:
       - name: Run tests
         run: ./gradlew test
 
+      - name: Sign APK
+        run: |
+         echo "$KEYSTORE_FILE_BASE64" | base64 --decode > app/smartpm.jks
+         jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 -keystore app/smartpm.jks -storepass 123456 -keypass 123456 app/build/outputs/apk/release/app-release-unsigned.apk smartpm
+
+
       # Create release
       - name: Create Release
         id: create_release
