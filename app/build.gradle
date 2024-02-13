@@ -4,8 +4,37 @@ plugins {
 }
 
 android {
+
+    signingConfigs {
+        debug {
+        }
+        release {
+            storeFile file('/smartpm.jks')
+            storePassword '123456'
+            keyAlias 'smartpm'
+            keyPassword '123456'
+        }
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "String", 'BASE_URL', '"https://test.smartpm.app/api/"'
+            buildConfigField "String", 'IMAGE_BASE_URL', '"https://test.smartpm.app/assets/company_photo/"'
+            buildConfigField "String", 'NOTE_IMAGE_BASE_URL', '"https://test.smartpm.app/assets/note_photos/"'
+            buildConfigField "String", 'COMPANY_PHOTO_BASE_URL', '"https://test.smartpm.app/assets/division_company_photo/"'
+        }
+        release {
+            buildConfigField "String", 'BASE_URL', '"https://smartpm.app/api/"'
+            buildConfigField "String", 'IMAGE_BASE_URL', '"https://smartpm.app/assets/company_photo/"'
+            buildConfigField "String", 'NOTE_IMAGE_BASE_URL', '"https://smartpm.app/assets/note_photos/"'
+            buildConfigField "String", 'COMPANY_PHOTO_BASE_URL', '"https://smartpm.app/assets/division_company_photo/"'
+        }
+    }
     namespace 'com.example.hisatwinder'
     compileSdk 34
+
+
+
 
     defaultConfig {
         applicationId "com.example.hisatwinder"
@@ -20,10 +49,29 @@ android {
         }
     }
 
+    signingConfigs {
+
+        release {
+            storeFile file('/smartpm.jks')
+            storePassword "123456"
+            keyAlias "smartpm"
+            keyPassword "123456"
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            debuggable true
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            versionNameSuffix ".dev"
+            debuggable true
+            minifyEnabled false
         }
     }
     compileOptions {
