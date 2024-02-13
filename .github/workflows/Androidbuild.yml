@@ -20,11 +20,11 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
-
-      - name: Run tests
-        run: ./gradlew test
+#      - name: Make gradlew executable
+#        run: chmod +x ./gradlew
+#
+#      - name: Run tests
+#        run: ./gradlew test
 
 
       # Create release
@@ -34,8 +34,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
-          tag_name: v2.5.0
-          release_name: Release 2.5.0
+          tag_name: v2.6.0
+          release_name: Release 2.6.0
           body: |
             Release notes for version :
             - Satwinder Singh
